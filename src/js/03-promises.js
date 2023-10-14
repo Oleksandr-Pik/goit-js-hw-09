@@ -10,7 +10,7 @@
 
 // Для відображення повідомлень користувачеві, замість console.log(), використовуй бібліотеку notiflix.
 
-// Підключення бібліотеки Notiflix
+
 import Notiflix from 'notiflix';
 
 function createPromise(position, delay) {
