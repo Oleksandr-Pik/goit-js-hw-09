@@ -54,6 +54,8 @@ import 'flatpickr/dist/flatpickr.min.css';
 // Локалізація
 import { Ukrainian } from 'flatpickr/dist/l10n/uk.js';
 
+let selectedDate = null;
+
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -64,8 +66,7 @@ const options = {
     console.log(selectedDates[0]);
     selectedDate = selectedDates[0];
     const currentDate = new Date();
-
-    if (selectedDate <= currentDate) {
+    if (selectedDate - currentDate <= 0) {
         Notiflix.Notify.failure('Please choose a date in the future');
     } else {
       startBtn.disabled = false;
@@ -85,7 +86,6 @@ function startCountdown() {
   const intervalId = setInterval(() => {
     const currentDate = new Date();
     const timeDifference = selectedDate - currentDate;
-    
     if (timeDifference <= 0) {
       clearInterval(intervalId);
       return;
